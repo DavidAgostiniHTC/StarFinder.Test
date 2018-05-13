@@ -11960,7 +11960,7 @@ angular.module('mm.core.login', [])
         templateUrl: 'core/components/login/templates/credentials.html',
         controller: 'mmLoginCredentialsCtrl',
         params: {
-            siteurl: 'https://school.demo.moodle.net',
+            siteurl: '',
             username: '',
             urltoopen: '',
             siteconfig: true
@@ -11977,7 +11977,7 @@ angular.module('mm.core.login', [])
         controller: 'mmLoginReconnectCtrl',
         cache: false,
         params: {
-            siteurl: 'https://school.moodle.demo.net',
+            siteurl: '',
             username: '',
             infositeurl: '',
             siteid: '',
@@ -11992,7 +11992,7 @@ angular.module('mm.core.login', [])
         controller: 'mmLoginEmailSignupCtrl',
         cache: false,
         params: {
-            siteurl: 'https://school.moodle.demo.net'
+            siteurl: ''
         }
     })
     .state('mm_login.sitepolicy', {
@@ -12001,7 +12001,7 @@ angular.module('mm.core.login', [])
         controller: 'mmLoginSitePolicyCtrl',
         cache: false,
         params: {
-            siteid: ''
+            siteid: 'https://school.moodle.demo.net'
         }
     })
     .state('mm_login.forgottenpassword', {
@@ -12009,7 +12009,7 @@ angular.module('mm.core.login', [])
         templateUrl: 'core/components/login/templates/forgottenpassword.html',
         controller: 'mmLoginForgottenPasswordCtrl',
         params: {
-            siteurl: 'https://school.moodle.demo.net',
+            siteurl: '',
             username: ''
         }
     });
@@ -21090,9 +21090,9 @@ angular.module('mm.core.login')
 .controller('mmLoginSiteCtrl', ["$scope", "$state", "$mmSitesManager", "$mmUtil", "$ionicHistory", "$mmApp", "$ionicModal", "$ionicPopup", "$mmLoginHelper", "$q", "mmCoreConfigConstants", function($scope, $state, $mmSitesManager, $mmUtil, $ionicHistory, $mmApp, $ionicModal, $ionicPopup,
         $mmLoginHelper, $q, mmCoreConfigConstants) {
 	siteConfig = $stateParams.siteconfig
-	$state.go('mm_login.credentials', {siteurl: 'https://school.moodle.demo.net', siteconfig: result.config});
+	$state.go('mm_login.credentials', {siteurl: '', siteconfig: result.config});
     /*$scope.loginData = {
-        siteurl: 'https://school.moodle.demo.net'
+        siteurl: ''
     };
     $scope.connect = function(url) {
         $mmApp.closeKeyboard();
