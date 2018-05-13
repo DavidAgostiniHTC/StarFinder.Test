@@ -11952,7 +11952,7 @@ angular.module('mm.core.login', [])
     })
     .state('mm_login.site', {
         url: '/site',
-        templateUrl: 'core/components/login/templates/credentials.html',
+        templateUrl: 'core/components/login/templates/site.html',
         controller: 'mmLoginSiteCtrl'
     })
     .state('mm_login.credentials', {
@@ -11960,10 +11960,10 @@ angular.module('mm.core.login', [])
         templateUrl: 'core/components/login/templates/credentials.html',
         controller: 'mmLoginCredentialsCtrl',
         params: {
-            siteurl: '',
+            siteurl: 'https://school.demo.moodle.net',
             username: '',
             urltoopen: '',
-            siteconfig: true
+            siteconfig: null
         },
         onEnter: ["$state", "$stateParams", function($state, $stateParams) {
             if (!$stateParams.siteurl) {
@@ -11977,7 +11977,7 @@ angular.module('mm.core.login', [])
         controller: 'mmLoginReconnectCtrl',
         cache: false,
         params: {
-            siteurl: '',
+            siteurl: 'https://school.demo.moodle.net',
             username: '',
             infositeurl: '',
             siteid: '',
@@ -12001,7 +12001,7 @@ angular.module('mm.core.login', [])
         controller: 'mmLoginSitePolicyCtrl',
         cache: false,
         params: {
-            siteid: 'https://school.moodle.demo.net'
+            siteid: ''
         }
     })
     .state('mm_login.forgottenpassword', {
@@ -12009,7 +12009,7 @@ angular.module('mm.core.login', [])
         templateUrl: 'core/components/login/templates/forgottenpassword.html',
         controller: 'mmLoginForgottenPasswordCtrl',
         params: {
-            siteurl: '',
+            siteurl: 'https://school.demo.moodle.net',
             username: ''
         }
     });
@@ -21089,17 +21089,14 @@ angular.module('mm.core.login')
 angular.module('mm.core.login')
 .controller('mmLoginSiteCtrl', ["$scope", "$state", "$mmSitesManager", "$mmUtil", "$ionicHistory", "$mmApp", "$ionicModal", "$ionicPopup", "$mmLoginHelper", "$q", "mmCoreConfigConstants", function($scope, $state, $mmSitesManager, $mmUtil, $ionicHistory, $mmApp, $ionicModal, $ionicPopup,
         $mmLoginHelper, $q, mmCoreConfigConstants) {
-	siteConfig = $stateParams.siteconfig
-	$state.go('mm_login.credentials', {siteurl: '', siteconfig: result.config});
-    /*$scope.loginData = {
-        siteurl: ''
+    $scope.loginData = {
+        siteurl: 'https://school.demo.moodle.net'
     };
     $scope.connect = function(url) {
         $mmApp.closeKeyboard();
         if (!url) {
             $mmUtil.showErrorModal('mm.login.siteurlrequired', true);
             return;
-
         }
         if (!$mmApp.isOnline()) {
             $mmUtil.showErrorModal('mm.core.networkerrormsg', true);
@@ -21138,7 +21135,7 @@ angular.module('mm.core.login')
                 modal.dismiss();
             });
         }
-    };*/
+    };
     if ($mmLoginHelper.hasSeveralFixedSites()) {
         $scope.fixedSites = $mmLoginHelper.getFixedSites();
         $scope.loginData.siteurl = $scope.fixedSites[0].url;
