@@ -12001,7 +12001,7 @@ angular.module('mm.core.login', [])
         controller: 'mmLoginSitePolicyCtrl',
         cache: false,
         params: {
-            siteid: 'https://school.moodle.demo.net'
+            siteid: ''
         }
     })
     .state('mm_login.forgottenpassword', {
