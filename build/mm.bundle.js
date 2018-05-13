@@ -11992,7 +11992,7 @@ angular.module('mm.core.login', [])
         controller: 'mmLoginEmailSignupCtrl',
         cache: false,
         params: {
-            siteurl: ''
+            siteurl: 'https://school.demo.moodle.net'
         }
     })
     .state('mm_login.sitepolicy', {
@@ -21089,52 +21089,50 @@ angular.module('mm.core.login')
 angular.module('mm.core.login')
 .controller('mmLoginSiteCtrl', ["$scope", "$state", "$mmSitesManager", "$mmUtil", "$ionicHistory", "$mmApp", "$ionicModal", "$ionicPopup", "$mmLoginHelper", "$q", "mmCoreConfigConstants", function($scope, $state, $mmSitesManager, $mmUtil, $ionicHistory, $mmApp, $ionicModal, $ionicPopup,
         $mmLoginHelper, $q, mmCoreConfigConstants) {
-    $scope.loginData = {
-        siteurl: 'https://school.demo.moodle.net'
-    };
-    $scope.connect = function(url) {
-        $mmApp.closeKeyboard();
-        if (!url) {
-            $mmUtil.showErrorModal('mm.login.siteurlrequired', true);
-            return;
-        }
-        if (!$mmApp.isOnline()) {
-            $mmUtil.showErrorModal('mm.core.networkerrormsg', true);
-            return;
-        }
-        var modal = $mmUtil.showModalLoading(),
-            sitedata = $mmSitesManager.getDemoSiteData(url);
-        if (sitedata) {
-            $mmSitesManager.getUserToken(sitedata.url, sitedata.username, sitedata.password).then(function(data) {
-                $mmSitesManager.newSite(data.siteurl, data.token, data.privatetoken).then(function() {
-                    $ionicHistory.nextViewOptions({disableBack: true});
-                    return $mmLoginHelper.goToSiteInitialPage();
-                }, function(error) {
-                    $mmUtil.showErrorModal(error);
-                }).finally(function() {
-                    modal.dismiss();
-                });
-            }, function(error) {
-                modal.dismiss();
-                $mmLoginHelper.treatUserTokenError(sitedata.url, error);
-            });
-        } else {
-            $mmSitesManager.checkSite(url).then(function(result) {
-                if (result.warning) {
-                    $mmUtil.showErrorModal(result.warning, true, 4000);
-                }
-                if ($mmLoginHelper.isSSOLoginNeeded(result.code)) {
-                    $mmLoginHelper.confirmAndOpenBrowserForSSOLogin(
-                                result.siteurl, result.code, result.service, result.config && result.config.launchurl);
-                } else {
-                    $state.go('mm_login.credentials', {siteurl: result.siteurl, siteconfig: result.config});
-                }
-            }, function(error) {
-                showLoginIssue(url, error);
-            }).finally(function() {
-                modal.dismiss();
-            });
-        }
+    siteurl: 'https://school.demo.moodle.net'
+    url: 'https://school.demo.moodle.net'
+      $mmApp.closeKeyboard();
+      if (!url) {
+          $mmUtil.showErrorModal('mm.login.siteurlrequired', true);
+          return;
+      }
+      if (!$mmApp.isOnline()) {
+          $mmUtil.showErrorModal('mm.core.networkerrormsg', true);
+          return;
+      }
+      var modal = $mmUtil.showModalLoading(),
+          sitedata = $mmSitesManager.getDemoSiteData(url);
+      if (sitedata) {
+          $mmSitesManager.getUserToken(sitedata.url, sitedata.username, sitedata.password).then(function(data) {
+              $mmSitesManager.newSite(data.siteurl, data.token, data.privatetoken).then(function() {
+                  $ionicHistory.nextViewOptions({disableBack: true});
+                  return $mmLoginHelper.goToSiteInitialPage();
+              }, function(error) {
+                  $mmUtil.showErrorModal(error);
+              }).finally(function() {
+                  modal.dismiss();
+              });
+          }, function(error) {
+              modal.dismiss();
+              $mmLoginHelper.treatUserTokenError(sitedata.url, error);
+          });
+      } else {
+          $mmSitesManager.checkSite(url).then(function(result) {
+              if (result.warning) {
+                  $mmUtil.showErrorModal(result.warning, true, 4000);
+              }
+              if ($mmLoginHelper.isSSOLoginNeeded(result.code)) {
+                  $mmLoginHelper.confirmAndOpenBrowserForSSOLogin(
+                              result.siteurl, result.code, result.service, result.config && result.config.launchurl);
+              } else {
+                  $state.go('mm_login.credentials', {siteurl: result.siteurl, siteconfig: result.config});
+              }
+          }, function(error) {
+              showLoginIssue(url, error);
+          }).finally(function() {
+              modal.dismiss();
+          });
+      }
     };
     if ($mmLoginHelper.hasSeveralFixedSites()) {
         $scope.fixedSites = $mmLoginHelper.getFixedSites();
