@@ -11956,7 +11956,7 @@ angular.module('mm.core.login', [])
         controller: 'mmLoginSiteCtrl'
     })
     .state('mm_login.credentials', {
-        url: '/cred',
+        url: 'https://school.demo.moodle.net'',
         templateUrl: 'core/components/login/templates/credentials.html',
         controller: 'mmLoginCredentialsCtrl',
         params: {
@@ -21090,23 +21090,6 @@ angular.module('mm.core.login')
 .controller('mmLoginSiteCtrl', ["$scope", "$state", "$mmSitesManager", "$mmUtil", "$ionicHistory", "$mmApp", "$ionicModal", "$ionicPopup", "$mmLoginHelper", "$q", "mmCoreConfigConstants", function($scope, $state, $mmSitesManager, $mmUtil, $ionicHistory, $mmApp, $ionicModal, $ionicPopup,
         $mmLoginHelper, $q, mmCoreConfigConstants) {
     siteurl: 'https://school.demo.moodle.net'
-    
-    $mmSitesManager.checkSite(url).then(function(result) {
-        if (result.warning) {
-            $mmUtil.showErrorModal(result.warning, true, 4000);
-        }
-        if ($mmLoginHelper.isSSOLoginNeeded(result.code)) {
-            $mmLoginHelper.confirmAndOpenBrowserForSSOLogin(
-                        result.siteurl, result.code, result.service, result.config && result.config.launchurl);
-        } else {
-            $state.go('mm_login.credentials', {siteurl: result.siteurl, siteconfig: result.config});
-        }
-    }, function(error) {
-        showLoginIssue(url, error);
-    }).finally(function() {
-        modal.dismiss();
-    });
-
     $state.go('mm_login.credentials', {siteurl: result.siteurl, siteconfig: result.config});
     $scope.loginData = {
         siteurl: 'https://school.demo.moodle.net'
