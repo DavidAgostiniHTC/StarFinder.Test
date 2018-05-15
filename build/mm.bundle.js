@@ -11952,8 +11952,11 @@ angular.module('mm.core.login', [])
     })
     .state('mm_login.site', {
         url: '/site',
-        templateUrl: 'core/components/login/templates/credentials.html',
+        templateUrl: 'core/components/login/templates/site.html',
         controller: 'mmLoginSiteCtrl'
+        onEnter: ["$state", "$stateParams", function($state, $stateParams) {
+            $state.go('mm_login.credentials');
+        }]
     })
     .state('mm_login.credentials', {
         url: '/cred',
@@ -20564,10 +20567,7 @@ angular.module('mm.core.login')
 .controller('mmLoginCredentialsCtrl', ["$scope", "$stateParams", "$mmSitesManager", "$mmUtil", "$ionicHistory", "$mmApp", "$mmEvents", "$q", "$mmLoginHelper", "$mmContentLinksDelegate", "$mmContentLinksHelper", "$translate", "mmCoreLoginSiteCheckedEvent", "$state", "mmCoreLoginSiteUncheckedEvent", function($scope, $stateParams, $mmSitesManager, $mmUtil, $ionicHistory, $mmApp, $mmEvents,
             $q, $mmLoginHelper, $mmContentLinksDelegate, $mmContentLinksHelper, $translate, mmCoreLoginSiteCheckedEvent, $state,
             mmCoreLoginSiteUncheckedEvent) {
-
-
-
-    $scope.siteurl = 'https://school.demo.moodle.net';
+    $scope.siteurl = $stateParams.siteurl;
     $scope.credentials = {
         username: $stateParams.username
     };
@@ -21093,7 +21093,20 @@ angular.module('mm.core.login')
 .controller('mmLoginSiteCtrl', ["$scope", "$state", "$mmSitesManager", "$mmUtil", "$ionicHistory", "$mmApp", "$ionicModal", "$ionicPopup", "$mmLoginHelper", "$q", "mmCoreConfigConstants", function($scope, $state, $mmSitesManager, $mmUtil, $ionicHistory, $mmApp, $ionicModal, $ionicPopup,
         $mmLoginHelper, $q, mmCoreConfigConstants) {
     $scope.loginData = {
-        siteurl: 'https://school.demo.moodle.net'
+        siteurl: ''
+    };
+    $scope.connect = function(url) {
+        $mmApp.closeKeyboard();
+        if (!url) {
+            $mmUtil.showErrorModal('mm.login.siteurlrequired', true);
+            return;
+        }
+        if (!$mmApp.isOnline()) {
+            $mmUtil.showErrorModal('mm.core.networkerrormsg', true);
+            return;
+        }
+        var modal = $mmUtil.showModalLoading(),
+            sitedata = $mmSitesManager.getDemoSiteData(url);
         if (sitedata) {
             $mmSitesManager.getUserToken(sitedata.url, sitedata.username, sitedata.password).then(function(data) {
                 $mmSitesManager.newSite(data.siteurl, data.token, data.privatetoken).then(function() {
