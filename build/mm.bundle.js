@@ -11952,10 +11952,18 @@ angular.module('mm.core.login', [])
     })
     .state('mm_login.site', {
         url: '/site',
-        templateUrl: 'core/components/login/templates/site.html',
-        controller: 'mmLoginSiteCtrl'
+        templateUrl: 'core/components/login/templates/credentials.html',
+        controller: 'mmLoginCredentialsCtrl',
+        params: {
+            siteurl: 'https://school.demo.moodle.net',
+            username: '',
+            urltoopen: '',
+            siteconfig: null
+        },
         onEnter: ["$state", "$stateParams", function($state, $stateParams) {
-            $state.go('mm_login.credentials');
+            if (!$stateParams.siteurl) {
+              $state.go('mm_login.init');
+            }
         }]
     })
     .state('mm_login.credentials', {
