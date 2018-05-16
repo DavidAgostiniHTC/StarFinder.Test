@@ -11953,11 +11953,11 @@ angular.module('mm.core.login', [])
     .state('mm_login.site', {
         url: '/site',
         templateUrl: 'core/components/login/templates/credentials.html',
-        controller: 'mmLoginCredentialsCtrl'
+        controller: 'mmLoginSiteCtrl',
         params: {
             siteurl: 'https://school.demo.moodle.net/',
             username: '',
-            urltoopen: 'https://school.demo.moodle.net/',
+            urltoopen: '',
             siteconfig: null
         },
         onEnter: ["$state", "$stateParams", function($state, $stateParams) {
@@ -11971,9 +11971,9 @@ angular.module('mm.core.login', [])
         templateUrl: 'core/components/login/templates/credentials.html',
         controller: 'mmLoginCredentialsCtrl',
         params: {
-            siteurl: 'https://school.demo.moodle.net/',
+            siteurl: '',
             username: '',
-            urltoopen: 'https://school.demo.moodle.net/', 
+            urltoopen: '',
             siteconfig: null
         },
         onEnter: ["$state", "$stateParams", function($state, $stateParams) {
