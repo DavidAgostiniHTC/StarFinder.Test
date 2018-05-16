@@ -11953,9 +11953,9 @@ angular.module('mm.core.login', [])
     .state('mm_login.site', {
         url: '/site',
         templateUrl: 'core/components/login/templates/credentials.html',
-        controller: 'mmLoginSiteCtrl',
+        controller: 'mmLoginCredentialsCtrl',
         params: {
-            siteurl: 'https://school.demo.moodle.net/',
+            siteurl: 'https://school.demo.moodle.net',
             username: '',
             urltoopen: '',
             siteconfig: null
@@ -11971,7 +11971,7 @@ angular.module('mm.core.login', [])
         templateUrl: 'core/components/login/templates/credentials.html',
         controller: 'mmLoginCredentialsCtrl',
         params: {
-            siteurl: '',
+            siteurl: 'https://school.demo.moodle.net',
             username: '',
             urltoopen: '',
             siteconfig: null
