@@ -3976,14 +3976,14 @@ a.subdued {
     .bar.bar-balanced.bar-footer {
       background-image: linear-gradient(180deg, #394e00, #394e00 50%, transparent 50%); }
   .bar.bar-energized {
-    border-color: #f7a304;
+    border-color: #3b68e5;
     background-color: #fbad1a;
-    background-image: linear-gradient(0deg, #f7a304, #f7a304 50%, transparent 50%);
+    background-image: linear-gradient(0deg, #3b68e5, #3b68e5 50%, transparent 50%);
     color: #fff; }
     .bar.bar-energized .title {
       color: #fff; }
     .bar.bar-energized.bar-footer {
-      background-image: linear-gradient(180deg, #f7a304, #f7a304 50%, transparent 50%); }
+      background-image: linear-gradient(180deg, #3b68e5, #3b68e5 50%, transparent 50%); }
   .bar.bar-royal {
     border-color: #dd6c06;
     background-color: #3d79ad;
@@ -4222,15 +4222,15 @@ a.subdued {
     background: none; }
 
 .bar-energized .button {
-  border-color: #f7a304;
+  border-color: #3b68e5;
   background-color: #fbad1a;
   color: #fff; }
   .bar-energized .button:hover {
     color: #fff;
     text-decoration: none; }
   .bar-energized .button.active, .bar-energized .button.activated {
-    border-color: #f7a304;
-    background-color: #f7a304; }
+    border-color: #3b68e5;
+    background-color: #3b68e5; }
   .bar-energized .button.button-clear {
     border-color: transparent;
     background: none;
@@ -4517,9 +4517,9 @@ a.subdued {
 
 .tabs-energized > .tabs,
 .tabs.tabs-energized {
-  border-color: #f7a304;
+  border-color: #3b68e5;
   background-color: #fbad1a;
-  background-image: linear-gradient(0deg, #f7a304, #f7a304 50%, transparent 50%);
+  background-image: linear-gradient(0deg, #3b68e5, #3b68e5 50%, transparent 50%);
   color: #fff; }
   .tabs-energized > .tabs .tab-item .badge, .tabs-energized > .tabs .tab-item .mma-messages-date span, .mma-messages-date .tabs-energized > .tabs .tab-item span, .tabs-energized > .tabs .tab-item
   .mma-messages-unreadfrom span,
@@ -5107,8 +5107,8 @@ a.subdued {
 .tabs-background-energized .tabs,
 .tabs-background-energized > .tabs {
   background-color: #fbad1a;
-  background-image: linear-gradient(0deg, #f7a304, #f7a304 50%, transparent 50%);
-  border-color: #f7a304; }
+  background-image: linear-gradient(0deg, #3b68e5, #3b68e5 50%, transparent 50%);
+  border-color: #3b68e5; }
 
 .tabs-background-royal .tabs,
 .tabs-background-royal > .tabs {
@@ -6165,7 +6165,7 @@ ion-tabs.tabs-striped.tabs-color-active-dark .tab-item.tab-item-active, ion-tabs
     background-color: #5e8100;
     color: #fff; }
   .item.item-energized, .mm-grades-table .item-energized.itemcenter {
-    border-color: #f7a304;
+    border-color: #3b68e5;
     background-color: #fbad1a;
     color: #fff; }
   .item.item-royal, .mm-grades-table .item-royal.itemcenter {
@@ -6309,16 +6309,16 @@ ion-tabs.tabs-striped.tabs-color-active-dark .tab-item.tab-item-active, ion-tabs
   .item-complex.activated .item-content.item-energized,
   .item .item-content.active.item-energized, .mm-grades-table .itemcenter .item-content.active.item-energized,
   .item .item-content.activated.item-energized, .mm-grades-table .itemcenter .item-content.activated.item-energized {
-    border-color: #f7a304;
-    background-color: #f7a304; }
+    border-color: #3b68e5;
+    background-color: #3b68e5; }
     .item.active.item-energized.item-complex > .item-content, .mm-grades-table .active.item-energized.item-complex.itemcenter > .item-content,
     .item.activated.item-energized.item-complex > .item-content, .mm-grades-table .activated.item-energized.item-complex.itemcenter > .item-content,
     .item-complex.active .item-content.item-energized.item-complex > .item-content,
     .item-complex.activated .item-content.item-energized.item-complex > .item-content,
     .item .item-content.active.item-energized.item-complex > .item-content, .mm-grades-table .itemcenter .item-content.active.item-energized.item-complex > .item-content,
     .item .item-content.activated.item-energized.item-complex > .item-content, .mm-grades-table .itemcenter .item-content.activated.item-energized.item-complex > .item-content {
-      border-color: #f7a304;
-      background-color: #f7a304; }
+      border-color: #3b68e5;
+      background-color: #3b68e5; }
   .item.active.item-royal, .mm-grades-table .active.item-royal.itemcenter,
   .item.activated.item-royal,
   .mm-grades-table .activated.item-royal.itemcenter,
@@ -6524,15 +6524,15 @@ a.item-content {
       background-color: #394e00; }
 
 .item-complex.item-energized > .item-content {
-  border-color: #f7a304;
+  border-color: #3b68e5;
   background-color: #fbad1a;
   color: #fff; }
   .item-complex.item-energized > .item-content.active, .item-complex.item-energized > .item-content:active {
-    border-color: #f7a304;
-    background-color: #f7a304; }
+    border-color: #3b68e5;
+    background-color: #3b68e5; }
     .item-complex.item-energized > .item-content.active.item-complex > .item-content, .item-complex.item-energized > .item-content:active.item-complex > .item-content {
-      border-color: #f7a304;
-      background-color: #f7a304; }
+      border-color: #3b68e5;
+      background-color: #3b68e5; }
 
 .item-complex.item-royal > .item-content {
   border-color: #dd6c06;
@@ -9341,7 +9341,7 @@ progress {
       text-decoration: none; }
     .button.button-energized.active, .button.button-energized.activated {
       border-color: #0064d2;
-      background-color: #f7a304; }
+      background-color: #3b68e5; }
     .button.button-energized.button-clear {
       border-color: transparent;
       background: none;
@@ -9561,7 +9561,7 @@ a.button {
   .button-bar.bar-balanced > .button {
     border-color: #394e00; }
   .button-bar.bar-energized > .button {
-    border-color: #f7a304; }
+    border-color: #3b68e5; }
   .button-bar.bar-royal > .button {
     border-color: #dd6c06; }
   .button-bar.bar-dark > .button {
@@ -10101,7 +10101,7 @@ a.button {
   background-color: #fbad1a; }
 
 .energized-border {
-  border-color: #f7a304; }
+  border-color: #3b68e5; }
 
 .royal, a.royal {
   color: #3d79ad; }
