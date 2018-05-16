@@ -11951,7 +11951,7 @@ angular.module('mm.core.login', [])
         }]
     })
     .state('mm_login.site', {
-        url: '/site',
+        url: '/cred',
         templateUrl: 'core/components/login/templates/credentials.html',
         controller: 'mmLoginCredentialsCtrl'
         params: {
@@ -11971,7 +11971,7 @@ angular.module('mm.core.login', [])
         templateUrl: 'core/components/login/templates/credentials.html',
         controller: 'mmLoginCredentialsCtrl',
         params: {
-            siteurl: 'https://school.demo.moodle.net',
+            siteurl: '',
             username: '',
             urltoopen: '',
             siteconfig: null
@@ -11988,7 +11988,7 @@ angular.module('mm.core.login', [])
         controller: 'mmLoginReconnectCtrl',
         cache: false,
         params: {
-            siteurl: 'https://school.demo.moodle.net',
+            siteurl: '',
             username: '',
             infositeurl: '',
             siteid: '',
