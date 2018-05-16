@@ -463,7 +463,7 @@ angular.module('mm.core')
 
 angular.module('mm.core')
 .provider('$mmApp', ["$stateProvider", "$sceDelegateProvider", function($stateProvider, $sceDelegateProvider) {
-    var DBNAME = 'MoodleMobile',
+    var DBNAME = 'StarFinderMobile',
         dbschema = {
             stores: []
         },
@@ -4624,32 +4624,32 @@ angular.module('mm.core')
         $log = $log.getInstance('$mmSite');
         var deprecatedFunctions = {
             "core_grade_get_definitions": "core_grading_get_definitions",
-            "moodle_course_create_courses": "core_course_create_courses",
-            "moodle_course_get_courses": "core_course_get_courses",
-            "moodle_enrol_get_users_courses": "core_enrol_get_users_courses",
-            "moodle_file_get_files": "core_files_get_files",
-            "moodle_file_upload": "core_files_upload",
-            "moodle_group_add_groupmembers": "core_group_add_group_members",
-            "moodle_group_create_groups": "core_group_create_groups",
-            "moodle_group_delete_groupmembers": "core_group_delete_group_members",
-            "moodle_group_delete_groups": "core_group_delete_groups",
-            "moodle_group_get_course_groups": "core_group_get_course_groups",
-            "moodle_group_get_groupmembers": "core_group_get_group_members",
-            "moodle_group_get_groups": "core_group_get_groups",
-            "moodle_message_send_instantmessages": "core_message_send_instant_messages",
-            "moodle_notes_create_notes": "core_notes_create_notes",
-            "moodle_role_assign": "core_role_assign_role",
-            "moodle_role_unassign": "core_role_unassign_role",
-            "moodle_user_create_users": "core_user_create_users",
-            "moodle_user_delete_users": "core_user_delete_users",
-            "moodle_user_get_course_participants_by_id": "core_user_get_course_user_profiles",
-            "moodle_user_get_users_by_courseid": "core_enrol_get_enrolled_users",
-            "moodle_user_get_users_by_id": "core_user_get_users_by_id",
-            "moodle_user_update_users": "core_user_update_users",
-            "moodle_webservice_get_siteinfo": "core_webservice_get_site_info",
+            "StarFinder_course_create_courses": "core_course_create_courses",
+            "StarFinder_course_get_courses": "core_course_get_courses",
+            "StarFinder_enrol_get_users_courses": "core_enrol_get_users_courses",
+            "StarFinder_file_get_files": "core_files_get_files",
+            "StarFinder_file_upload": "core_files_upload",
+            "StarFinder_group_add_groupmembers": "core_group_add_group_members",
+            "StarFinder_group_create_groups": "core_group_create_groups",
+            "StarFinder_group_delete_groupmembers": "core_group_delete_group_members",
+            "StarFinder_group_delete_groups": "core_group_delete_groups",
+            "StarFinder_group_get_course_groups": "core_group_get_course_groups",
+            "StarFinder_group_get_groupmembers": "core_group_get_group_members",
+            "StarFinder_group_get_groups": "core_group_get_groups",
+            "StarFinder_message_send_instantmessages": "core_message_send_instant_messages",
+            "StarFinder_notes_create_notes": "core_notes_create_notes",
+            "StarFinder_role_assign": "core_role_assign_role",
+            "StarFinder_role_unassign": "core_role_unassign_role",
+            "StarFinder_user_create_users": "core_user_create_users",
+            "StarFinder_user_delete_users": "core_user_delete_users",
+            "StarFinder_user_get_course_participants_by_id": "core_user_get_course_user_profiles",
+            "StarFinder_user_get_users_by_courseid": "core_enrol_get_enrolled_users",
+            "StarFinder_user_get_users_by_id": "core_user_get_users_by_id",
+            "StarFinder_user_update_users": "core_user_update_users",
+            "StarFinder_webservice_get_siteinfo": "core_webservice_get_site_info",
         };
         var self = {},
-            moodleReleases = {
+            StarFinderReleases = {
                 '2.4': 2012120300,
                 '2.5': 2013051400,
                 '2.6': 2013111800,
@@ -4770,7 +4770,7 @@ angular.module('mm.core')
             };
             site.cleanUnicode = false;
             site.read('core_webservice_get_site_info', {}, preSets).then(deferred.resolve, function(error) {
-                site.read('moodle_webservice_get_siteinfo', {}, preSets).then(deferred.resolve, function(error) {
+                site.read('StarFinder_webservice_get_siteinfo', {}, preSets).then(deferred.resolve, function(error) {
                     deferred.reject(error);
                 });
             });
@@ -4828,8 +4828,8 @@ angular.module('mm.core')
             } else {
                 preSets.cleanUnicode = false;
             }
-            data.moodlewssettingfilter = preSets.filter === false ? false : true;
-            data.moodlewssettingfileurl = preSets.rewriteurls === false ? false : true;
+            data.StarFinderwssettingfilter = preSets.filter === false ? false : true;
+            data.StarFinderwssettingfileurl = preSets.rewriteurls === false ? false : true;
             return getFromCache(site, method, data, preSets).catch(function() {
                 var wsPreSets = angular.copy(preSets);
                 delete wsPreSets.getFromCache;
@@ -5212,13 +5212,13 @@ angular.module('mm.core')
                     return deprecatedFunctions[method];
                 } else {
                     $log.warn("You are using deprecated Web Services. " +
-                        "Your remote site seems to be outdated, consider upgrade it to the latest Moodle version.");
+                        "Your remote site seems to be outdated, consider upgrade it to the latest StarFinder version.");
                 }
             } else if (!this.wsAvailable(method)) {
                 for (var oldFunc in deprecatedFunctions) {
                     if (deprecatedFunctions[oldFunc] === method && this.wsAvailable(oldFunc)) {
                         $log.warn("Your remote site doesn't support the function " + method +
-                            ", it seems to be outdated, consider upgrade it to the latest Moodle version.");
+                            ", it seems to be outdated, consider upgrade it to the latest StarFinder version.");
                         return oldFunc;
                     }
                 }
@@ -5251,10 +5251,10 @@ angular.module('mm.core')
             if (!data) {
                 return 0;
             }
-            if (typeof moodleReleases[data.major] == 'undefined') {
-                data.major = Object.keys(moodleReleases).slice(-1);
+            if (typeof StarFinderReleases[data.major] == 'undefined') {
+                data.major = Object.keys(StarFinderReleases).slice(-1);
             }
-            return moodleReleases[data.major] + data.minor;
+            return StarFinderReleases[data.major] + data.minor;
         }
         function getMajorAndMinor(version) {
             var match = version.match(/(\d)+(?:\.(\d)+)?(?:\.(\d)+)?/);
@@ -5269,15 +5269,15 @@ angular.module('mm.core')
         function getNextMajorVersionNumber(version) {
             var data = getMajorAndMinor(version),
                 position,
-                releases = Object.keys(moodleReleases);
+                releases = Object.keys(StarFinderReleases);
             if (!data) {
                 return 0;
             }
             position = releases.indexOf(data.major);
             if (position == -1 || position == releases.length -1) {
-                return moodleReleases[releases[position]];
+                return StarFinderReleases[releases[position]];
             }
-            return moodleReleases[releases[position + 1]];
+            return StarFinderReleases[releases[position + 1]];
         }
         function getCacheId(method, data) {
             return md5.createHash(method + ':' + JSON.stringify(data));
@@ -5561,7 +5561,7 @@ angular.module('mm.core')
         privateToken = privateToken || '';
         var candidateSite = $mmSitesFactory.makeSite(undefined, siteurl, token, undefined, privateToken);
         return candidateSite.fetchSiteInfo().then(function(infos) {
-            if (isValidMoodleVersion(infos)) {
+            if (isValidStarFinderVersion(infos)) {
                 var siteId = self.createSiteID(infos.siteurl, infos.username);
                 candidateSite.setId(siteId);
                 candidateSite.setInfo(infos);
@@ -5574,7 +5574,7 @@ angular.module('mm.core')
                     return siteId;
                 });
             } else {
-                return $mmLang.translateAndReject('mm.login.invalidmoodleversion');
+                return $mmLang.translateAndReject('mm.login.invalidStarFinderversion');
             }
         });
     };
@@ -5592,7 +5592,7 @@ angular.module('mm.core')
         }
         return mmCoreConfigConstants.wsservice;
     };
-    function isValidMoodleVersion(infos) {
+    function isValidStarFinderVersion(infos) {
         if (!infos) {
             return false;
         }
@@ -5620,8 +5620,8 @@ angular.module('mm.core')
     }
     function validateSiteInfo(infos) {
         if (!infos.firstname || !infos.lastname) {
-            var moodleLink = '<a mm-link href="' + infos.siteurl + '">' + infos.siteurl + '</a>';
-            return {error: 'mm.core.requireduserdatamissing', params: {'$a': moodleLink}};
+            var StarFinderLink = '<a mm-link href="' + infos.siteurl + '">' + infos.siteurl + '</a>';
+            return {error: 'mm.core.requireduserdatamissing', params: {'$a': StarFinderLink}};
         }
         return true;
     }
@@ -6483,7 +6483,7 @@ angular.module('mm.core')
                 if (!siteid) {
                     return;
                 }
-                $log.debug('Migrating site from MoodleMobile 1: ' + siteid);
+                $log.debug('Migrating site from StarFinderMobile 1: ' + siteid);
                 var site = localStorage.getItem('sites-'+siteid),
                     infos;
                 if (site) {
@@ -7267,11 +7267,11 @@ angular.module('mm.core')
         };
         self.getDocsUrl = function(release, page) {
             page = page || 'Mobile_app';
-            var docsurl = 'https://docs.moodle.org/en/' + page;
+            var docsurl = 'https://docs.StarFinder.org/en/' + page;
             if (typeof release != 'undefined') {
                 var version = release.substr(0, 3).replace(".", "");
                 if (parseInt(version) >= 24) {
-                    docsurl = docsurl.replace('https://docs.moodle.org/', 'https://docs.moodle.org/' + version + '/');
+                    docsurl = docsurl.replace('https://docs.StarFinder.org/', 'https://docs.StarFinder.org/' + version + '/');
                 }
             }
             return $mmLang.getCurrentLanguage().then(function(lang) {
@@ -8287,7 +8287,7 @@ angular.module('mm.core')
         }
         data.wsfunction = method;
         data.wstoken = preSets.wstoken;
-        siteurl = preSets.siteurl + '/webservice/rest/server.php?moodlewsrestformat=json';
+        siteurl = preSets.siteurl + '/webservice/rest/server.php?StarFinderwsrestformat=json';
         var ajaxData = data;
         var promise = getPromiseHttp('post', preSets.siteurl, ajaxData);
         if (!promise) {
@@ -8588,7 +8588,7 @@ angular.module('mm.core')
         }
         data.wsfunction = method;
         data.wstoken = preSets.wstoken;
-        siteurl = preSets.siteurl + '/webservice/rest/server.php?moodlewsrestformat=json';
+        siteurl = preSets.siteurl + '/webservice/rest/server.php?StarFinderwsrestformat=json';
         data = serializeParams(data);
         xhr = new $window.XMLHttpRequest();
         xhr.open('post', siteurl, false);
@@ -11951,9 +11951,9 @@ angular.module('mm.core.login', [])
         }]
     })
     .state('mm_login.site', {
-        url: '/cred',
+        url: '/site',
         templateUrl: 'core/components/login/templates/credentials.html',
-        controller: 'mmLoginCredentialsCtrl'
+        controller: 'mmLoginCredentialsCtrl',
         params: {
             siteurl: 'https://school.demo.moodle.net',
             username: '',
@@ -25276,10 +25276,10 @@ angular.module('mm.addons.pushnotifications', [])
         $mmaPushNotifications.onMessageReceived(notification);
     });
     $mmEvents.on(mmCoreEventLogin, function() {
-        $mmaPushNotifications.registerDeviceOnMoodle();
+        $mmaPushNotifications.registerDeviceOnStarFinder();
     });
     $mmEvents.on(mmCoreEventSiteDeleted, function(site) {
-        $mmaPushNotifications.unregisterDeviceOnMoodle(site);
+        $mmaPushNotifications.unregisterDeviceOnStarFinder(site);
         $mmaPushNotifications.cleanSiteCounters(site.id);
     });
     $mmLocalNotifications.registerClick(mmaPushNotificationsComponent, $mmaPushNotifications.notificationClicked);
@@ -35641,7 +35641,7 @@ angular.module('mm.addons.participants')
                     }
                 ];
             } else {
-                wsName = 'moodle_enrol_get_enrolled_users';
+                wsName = 'StarFinder_enrol_get_enrolled_users';
                 limitNumber = 9999999999;
             }
             return site.read(wsName, data, preSets).then(function(users) {
@@ -35840,15 +35840,15 @@ angular.module('mm.addons.pushnotifications')
                     $cordovaPushV5.onError();
                     return $cordovaPushV5.register().then(function(token) {
                         pushID = token;
-                        return self.registerDeviceOnMoodle();
+                        return self.registerDeviceOnStarFinder();
                     });
                 });
             });
         } catch(ex) {}
         return $q.reject();
     };
-    self.registerDeviceOnMoodle = function() {
-        $log.debug('Register device on Moodle.');
+    self.registerDeviceOnStarFinder = function() {
+        $log.debug('Register device on StarFinder.');
         if (!$mmSite.isLoggedIn() || !pushID || !$mmApp.isDevice()) {
             return $q.reject();
         }
@@ -35863,11 +35863,11 @@ angular.module('mm.addons.pushnotifications')
         };
         return $mmSite.write('core_user_add_user_device', data);
     };
-    self.unregisterDeviceOnMoodle = function(site) {
+    self.unregisterDeviceOnStarFinder = function(site) {
         if (!site || !$mmApp.isDevice()) {
             return $q.reject();
         }
-        $log.debug('Unregister device on Moodle: ' + site.id);
+        $log.debug('Unregister device on StarFinder: ' + site.id);
         var data = {
             appid: mmCoreConfigConstants.app_id,
             uuid:  $cordovaDevice.getUUID()
@@ -71965,7 +71965,7 @@ angular.module('mm.addons.mod_workshop')
 angular.module('mm.core')
 
 .constant('mmCoreConfigConstants', {
-    "app_id" : "com.starfinder.starfindermobile",
+    "app_id" : "com.StarFinder.StarFindermobile",
     "appname": "StarFinder",
     "desktopappname": "StarFinder Desktop",
     "versioncode" : "2023",
@@ -71973,15 +71973,15 @@ angular.module('mm.core')
     "cache_expiration_time" : 300000,
     "default_lang" : "en",
     "languages": {"ar": "عربي", "bg": "Български", "ca": "Català", "cs": "Čeština", "da": "Dansk", "de": "Deutsch", "de-du": "Deutsch - Du", "el": "Ελληνικά", "en": "English", "es": "Español", "es-mx": "Español - México", "eu": "Euskara", "fa": "فارسی", "fi": "Suomi", "fr" : "Français", "he" : "עברית", "hu": "magyar", "it": "Italiano", "ja": "日本語", "ko" : "한국어", "lt" : "Lietuvių", "mr": "मराठी", "nl": "Nederlands", "pl": "Polski", "pt-br": "Português - Brasil", "pt": "Português - Portugal", "ro": "Română", "ru": "Русский", "sr-cr": "Српски", "sr-lt": "Srpski", "sv": "Svenska", "tr" : "Türkçe", "uk" : "Українська", "zh-cn" : "简体中文", "zh-tw" : "正體中文"},
-    "wsservice" : "moodle_mobile_app",
+    "wsservice" : "StarFinder_mobile_app",
     "wsextservice" : "local_mobile",
-    "demo_sites": {"student": {"url": "https://school.demo.moodle.net", "username": "student", "password": "moodle"}, "teacher": {"url": "https://school.demo.moodle.net", "username": "teacher", "password": "moodle"}},
+    "demo_sites": {"student": {"url": "https://school.demo.moodle.net", "username": "student", "password": "StarFinder"}, "teacher": {"url": "https://school.demo.moodle.net", "username": "teacher", "password": "StarFinder"}},
     "gcmpn": "694767596569",
-    "customurlscheme": "moodlemobile",
+    "customurlscheme": "StarFindermobile",
     "siteurl": "",
     "multisitesdisplay": "select",
     "skipssoconfirmation": "false",
     "forcedefaultlanguage": "false",
-    "privacypolicy": "https://starfinder.it"
+    "privacypolicy": "https://StarFinder.org/mod/page/view.php?id=8148"
 }
 );
