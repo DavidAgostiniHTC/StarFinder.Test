@@ -11955,7 +11955,7 @@ angular.module('mm.core.login', [])
         templateUrl: 'core/components/login/templates/credentials.html',
         controller: 'mmLoginCredentialsCtrl',
         params: {
-            siteurl: 'https://www.testing.starfinder.it',
+            siteurl: 'https://testing.starfinder.it',
             username: '',
             urltoopen: '',
             siteconfig: null
@@ -11971,7 +11971,7 @@ angular.module('mm.core.login', [])
         templateUrl: 'core/components/login/templates/credentials.html',
         controller: 'mmLoginCredentialsCtrl',
         params: {
-            siteurl: 'https://www.testing.starfinder.it',
+            siteurl: 'https://testing.starfinder.it',
             username: '',
             urltoopen: '',
             siteconfig: null
